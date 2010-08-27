@@ -1,0 +1,47 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://www.tumblr.com:80/api/dashboard?filter=&start=0&num=20&type=&password=123456&likes=0&email=tumblr-dashboard-rss%40timurv.ru
+    body: 
+    headers: 
+      connection: 
+      - close
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      p3p: 
+      - CP="ALL ADM DEV PSAi COM OUR OTRo STP IND ONL"
+      connection: 
+      - close
+      via: 
+      - 1.0 proxy.toa:3128 (squid/2.6.STABLE21)
+      content-type: 
+      - text/xml; charset=UTF-8
+      x-cache-lookup: 
+      - MISS from proxy.toa:3128
+      x-cache: 
+      - MISS from proxy.toa
+      x-tumblr-usec: 
+      - D=68803
+      x-robots-tag: 
+      - noindex
+      server: 
+      - Apache/2.2.3 (Red Hat)
+      date: 
+      - Fri, 27 Aug 2010 14:00:56 GMT
+      content-length: 
+      - "1934"
+      x-cache-auto: 
+      - miss
+      vary: 
+      - Accept-Encoding
+      cache-control: 
+      - max-age=900
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <tumblr version="1.0"><posts><post id="1019811312" url="http://tumblr-dashboard-rss.tumblr.com/post/1019811312" url-with-slug="http://tumblr-dashboard-rss.tumblr.com/post/1019811312/photo-caption" type="photo" date-gmt="2010-08-27 13:58:54 GMT" date="Fri, 27 Aug 2010 09:58:54" unix-timestamp="1282917534" format="html" reblog-key="zcUZY5Yq" slug="photo-caption" tumblelog="tumblr-dashboard-rss" note-count="0" width="210" height="49"><tumblelog title="tumblr-dashboard-rss" name="tumblr-dashboard-rss" url="http://tumblr-dashboard-rss.tumblr.com/" timezone="US/Eastern" avatar-url-16="http://assets.tumblr.com/images/default_avatar_16.gif" avatar-url-24="http://assets.tumblr.com/images/default_avatar_24.gif" avatar-url-30="http://assets.tumblr.com/images/default_avatar_30.gif" avatar-url-40="http://assets.tumblr.com/images/default_avatar_40.gif" avatar-url-48="http://assets.tumblr.com/images/default_avatar_48.gif" avatar-url-64="http://assets.tumblr.com/images/default_avatar_64.gif" avatar-url-96="http://assets.tumblr.com/images/default_avatar_96.gif" avatar-url-128="http://assets.tumblr.com/images/default_avatar_128.gif" avatar-url-512="http://assets.tumblr.com/images/default_avatar_128.gif"/><photo-caption>&lt;p&gt;Photo caption&lt;/p&gt;</photo-caption><photo-url max-width="1280">http://26.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_250.png</photo-url><photo-url max-width="500">http://26.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_250.png</photo-url><photo-url max-width="400">http://26.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_250.png</photo-url><photo-url max-width="250">http://26.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_250.png</photo-url><photo-url max-width="100">http://27.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_100.png</photo-url><photo-url max-width="75">http://25.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_75sq.png</photo-url></post></posts></tumblr>
+
+    http_version: "1.0"

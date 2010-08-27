@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{tumblr-dashboard-rss}
+  s.name = %q{tumblr_dashboard_rss}
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -23,10 +23,10 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "features/step_definitions/tumblr-dashboard-rss_steps.rb",
+     "features/step_definitions/tumblr_dashboard_rss_steps.rb",
      "features/support/env.rb",
-     "features/tumblr-dashboard-rss.feature",
-     "lib/tumblr-dashboard-rss.rb"
+     "features/tumblr_dashboard_rss.feature",
+     "lib/tumblr_dashboard_rss.rb"
   ]
   s.homepage = %q{http://github.com/timurvafin/tumblr-dashboard-rss}
   s.rdoc_options = ["--charset=UTF-8"]

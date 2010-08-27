@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "tumblr-dashboard-rss"
+    gem.name = "tumblr_dashboard_rss"
     gem.summary = %Q{Generates rss feed from tumblr dashboard}
     gem.description = %Q{Generates rss feed from tumblr dashboard}
     gem.email = "me@timurv.ru"

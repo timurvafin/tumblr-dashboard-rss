@@ -1,8 +1,11 @@
 source :gemcutter
 
-gem 'tumblr', :git => 'git://github.com/jeffkreeftmeijer/tumblr.git', :ref => ' 65c809'
+gem 'httparty'
+gem 'activesupport'
+gem 'builder'
 
 group :development do
+  gem 'libxml-ruby'
   gem 'vcr'
   gem 'fakeweb'
   gem 'rspec'
