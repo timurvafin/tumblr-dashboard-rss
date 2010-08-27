@@ -1,6 +1,6 @@
 = tumblr-dashboard-rss
 
-Description goes here.
+Generates rss feed from tumblr dashboard
 
 == Note on Patches/Pull Requests
  
