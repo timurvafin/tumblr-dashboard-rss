@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tumblr_dashboard_rss}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Timur Vafin"]
-  s.date = %q{2010-08-27}
+  s.date = %q{2010-09-02}
   s.description = %q{Generates rss feed from tumblr dashboard}
   s.email = %q{me@timurv.ru}
   s.extra_rdoc_files = [
@@ -19,14 +19,21 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "Gemfile",
+     "Gemfile.lock",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_photo_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_regular_posts.yml",
      "features/step_definitions/tumblr_dashboard_rss_steps.rb",
      "features/support/env.rb",
+     "features/support/rspec.rb",
+     "features/support/vcr.rb",
      "features/tumblr_dashboard_rss.feature",
-     "lib/tumblr_dashboard_rss.rb"
+     "lib/tumblr_dashboard_rss.rb",
+     "tumblr_dashboard_rss.gemspec"
   ]
   s.homepage = %q{http://github.com/timurvafin/tumblr-dashboard-rss}
   s.rdoc_options = ["--charset=UTF-8"]
