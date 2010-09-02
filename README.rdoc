@@ -2,6 +2,12 @@
 
 Generates rss feed from tumblr dashboard
 
+ Tumblr::DashboardRSS.new('tumblr-dashboard-rss@timurv.ru/123456', '123456', {
+  'channel_name' => 'My super channel'
+ }).to_rss # => RSS feed from you dashboard
+
+Currently only regular and photo posts supported and tested
+
 == Note on Patches/Pull Requests
  
 * Fork the project.

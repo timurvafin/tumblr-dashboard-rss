@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rake'
+require 'rake/rdoctask'
 
 begin
   require 'jeweler'
@@ -30,3 +31,12 @@ rescue LoadError
 end
 
 task :default => :features
+
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "tumblr_dashboard_rss #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
