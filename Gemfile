@@ -5,6 +5,7 @@ gem 'activesupport'
 gem 'builder'
 
 group :development do
+  gem 'jeweler'
   gem 'libxml-ruby'
   gem 'vcr'
   gem 'fakeweb'
