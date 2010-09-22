@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'httparty'
-require 'activesupport'
+require 'active_support/core_ext/class/attribute'
 require 'ostruct'
 require 'cgi'
 require 'builder'
@@ -34,7 +34,7 @@ module Tumblr
     include HTTParty
     format :xml
 
-    cattr_accessor :default_options
+    class_attribute :default_options
     self.default_options = {
       'start' => 0,
       'num' => 20,
@@ -86,7 +86,7 @@ module Tumblr
       end
     end
 
-    cattr_accessor :default_options
+    class_attribute :default_options
     self.default_options = {
       'api' => {},
       'channel_name' => 'Tumblr dashboard',

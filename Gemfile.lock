@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (2.3.8)
+    activesupport (3.0.0)
     builder (2.1.2)
     columnize (0.3.1)
     crack (0.1.8)
@@ -42,12 +42,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
-  builder
+  activesupport (= 3.0.0)
+  builder (= 2.1.2)
   cucumber (= 0.8.5)
   fakeweb
   gherkin
-  httparty
+  httparty (= 0.6.1)
   jeweler
   libxml-ruby
   rspec
