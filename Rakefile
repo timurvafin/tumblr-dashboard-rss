@@ -1,8 +1,11 @@
 require 'rubygems'
+require 'bundler'
 require 'rake'
 require 'rake/rdoctask'
 require 'jeweler'
 require 'cucumber/rake/task'
+
+Bundler.setup
 
 Jeweler::Tasks.new do |gem|
   gem.name = "tumblr_dashboard_rss"
@@ -11,8 +14,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = "me@timurv.ru"
   gem.homepage = "http://github.com/timurvafin/tumblr-dashboard-rss"
   gem.authors = ["Timur Vafin"]
-  gem.add_development_dependency "rspec", ">= 1.2.9"
-  gem.add_development_dependency "cucumber", ">= 0"
+  gem.add_bundler_dependencies
 end
 
 Rake::RDocTask.new do |rdoc|

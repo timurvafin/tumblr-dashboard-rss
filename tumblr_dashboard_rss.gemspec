@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Timur Vafin"]
-  s.date = %q{2010-09-02}
+  s.date = %q{2010-09-22}
   s.description = %q{Generates rss feed from tumblr dashboard}
   s.email = %q{me@timurv.ru}
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     ".rvmrc",
      "Gemfile",
      "Gemfile.lock",
      "LICENSE",
@@ -46,15 +47,42 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
+      s.add_runtime_dependency(%q<httparty>, [">= 0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
+      s.add_runtime_dependency(%q<builder>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<libxml-ruby>, [">= 0"])
+      s.add_development_dependency(%q<vcr>, [">= 0"])
+      s.add_development_dependency(%q<fakeweb>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<cucumber>, ["= 0.8.5"])
+      s.add_development_dependency(%q<gherkin>, [">= 0"])
+      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
     else
-      s.add_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
+      s.add_dependency(%q<httparty>, [">= 0"])
+      s.add_dependency(%q<activesupport>, [">= 0"])
+      s.add_dependency(%q<builder>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<libxml-ruby>, [">= 0"])
+      s.add_dependency(%q<vcr>, [">= 0"])
+      s.add_dependency(%q<fakeweb>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<cucumber>, ["= 0.8.5"])
+      s.add_dependency(%q<gherkin>, [">= 0"])
+      s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 1.2.9"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
+    s.add_dependency(%q<httparty>, [">= 0"])
+    s.add_dependency(%q<activesupport>, [">= 0"])
+    s.add_dependency(%q<builder>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<libxml-ruby>, [">= 0"])
+    s.add_dependency(%q<vcr>, [">= 0"])
+    s.add_dependency(%q<fakeweb>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<cucumber>, ["= 0.8.5"])
+    s.add_dependency(%q<gherkin>, [">= 0"])
+    s.add_dependency(%q<ruby-debug>, [">= 0"])
   end
 end
 
