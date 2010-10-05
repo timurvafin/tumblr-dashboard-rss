@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Timur Vafin"]
-  s.date = %q{2010-09-22}
+  s.date = %q{2010-10-06}
   s.description = %q{Generates rss feed from tumblr dashboard}
   s.email = %q{me@timurv.ru}
   s.extra_rdoc_files = [
@@ -26,8 +26,14 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_audio_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_chat_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_full_of_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_link_posts.yml",
      "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_photo_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_quote_posts.yml",
      "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_regular_posts.yml",
+     "features/fixtures/vcr/cucumber_tags/tumblr_dashboard_with_video_posts.yml",
      "features/step_definitions/tumblr_dashboard_rss_steps.rb",
      "features/support/env.rb",
      "features/support/rspec.rb",
@@ -47,9 +53,9 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, [">= 0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
-      s.add_runtime_dependency(%q<builder>, [">= 0"])
+      s.add_runtime_dependency(%q<httparty>, ["= 0.6.1"])
+      s.add_runtime_dependency(%q<activesupport>, ["= 3.0.0"])
+      s.add_runtime_dependency(%q<builder>, ["= 2.1.2"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<libxml-ruby>, [">= 0"])
       s.add_development_dependency(%q<vcr>, [">= 0"])
@@ -59,9 +65,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<gherkin>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug>, [">= 0"])
     else
-      s.add_dependency(%q<httparty>, [">= 0"])
-      s.add_dependency(%q<activesupport>, [">= 0"])
-      s.add_dependency(%q<builder>, [">= 0"])
+      s.add_dependency(%q<httparty>, ["= 0.6.1"])
+      s.add_dependency(%q<activesupport>, ["= 3.0.0"])
+      s.add_dependency(%q<builder>, ["= 2.1.2"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<libxml-ruby>, [">= 0"])
       s.add_dependency(%q<vcr>, [">= 0"])
@@ -72,9 +78,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
-    s.add_dependency(%q<httparty>, [">= 0"])
-    s.add_dependency(%q<activesupport>, [">= 0"])
-    s.add_dependency(%q<builder>, [">= 0"])
+    s.add_dependency(%q<httparty>, ["= 0.6.1"])
+    s.add_dependency(%q<activesupport>, ["= 3.0.0"])
+    s.add_dependency(%q<builder>, ["= 2.1.2"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<libxml-ruby>, [">= 0"])
     s.add_dependency(%q<vcr>, [">= 0"])
