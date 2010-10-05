@@ -1,0 +1,41 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://www.tumblr.com:80/api/dashboard?filter=&start=0&num=20&type=&password=123456&likes=0&email=tumblr-dashboard-rss%40timurv.ru
+    body: 
+    headers: 
+      connection: 
+      - close
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      p3p: 
+      - CP="ALL ADM DEV PSAi COM OUR OTRo STP IND ONL"
+      content-type: 
+      - text/xml; charset=UTF-8
+      connection: 
+      - close
+      x-tumblr-usec: 
+      - D=87589
+      x-robots-tag: 
+      - noindex
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 05 Oct 2010 20:07:57 GMT
+      content-length: 
+      - "1515"
+      x-cache-auto: 
+      - miss
+      vary: 
+      - Accept-Encoding
+      cache-control: 
+      - max-age=900
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <tumblr version="1.0"><posts><post id="1250556363" url="http://tumblr-dashboard-rss.tumblr.com/post/1250556363" url-with-slug="http://tumblr-dashboard-rss.tumblr.com/post/1250556363/lorem-ipsum-is-simply-dummy-text-of-the-printing" type="quote" date-gmt="2010-10-05 19:54:00 GMT" date="Tue, 05 Oct 2010 15:54:00" unix-timestamp="1286308440" format="html" reblog-key="xMyJoxep" slug="lorem-ipsum-is-simply-dummy-text-of-the-printing" tumblelog="tumblr-dashboard-rss" note-count="0"><tumblelog title="tumblr-dashboard-rss" name="tumblr-dashboard-rss" url="http://tumblr-dashboard-rss.tumblr.com/" timezone="US/Eastern" avatar-url-16="http://assets.tumblr.com/images/default_avatar_16.gif" avatar-url-24="http://assets.tumblr.com/images/default_avatar_24.gif" avatar-url-30="http://assets.tumblr.com/images/default_avatar_30.gif" avatar-url-40="http://assets.tumblr.com/images/default_avatar_40.gif" avatar-url-48="http://assets.tumblr.com/images/default_avatar_48.gif" avatar-url-64="http://assets.tumblr.com/images/default_avatar_64.gif" avatar-url-96="http://assets.tumblr.com/images/default_avatar_96.gif" avatar-url-128="http://assets.tumblr.com/images/default_avatar_128.gif" avatar-url-512="http://assets.tumblr.com/images/default_avatar_128.gif"/><quote-text>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</quote-text><quote-source>&lt;a href="http://www.lipsum.com/"&gt;http://www.lipsum.com/&lt;/a&gt;</quote-source></post></posts></tumblr>
+
+    http_version: "1.1"

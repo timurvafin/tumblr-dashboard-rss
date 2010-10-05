@@ -6,18 +6,25 @@ require 'ostruct'
 require 'cgi'
 require 'builder'
 
-class String
-  # entities encoded & tags removed
+module RSSPostExtension
+  
   def to_rss_title
-    decode_entity.strip_tags
+    to_clean_rss_text
   end
 
-  # entities encoded & tags in place
+  def to_rss_link
+    to_clean_rss_text
+  end
+
   def to_rss_description
-    decode_entity
+    to_s
   end
 
   protected
+
+  def to_clean_rss_text
+    to_s.decode_entity.strip_tags.encode_entity
+  end
 
   def strip_tags
     gsub(/<\/?[^>]*>/, "")
@@ -27,6 +34,17 @@ class String
     CGI.unescapeHTML(self)
   end
 
+  def encode_entity
+    CGI.escapeHTML(self)
+  end
+end
+
+class String
+  include RSSPostExtension
+end
+
+class NilClass
+  include RSSPostExtension
 end
 
 module Tumblr
@@ -59,7 +77,7 @@ module Tumblr
 
   class DashboardRSS
     class Post
-      attr_reader :title, :description, :link, :date
+      attr_reader :title, :description, :link, :date, :audio_enclosure, :video_enclosure
 
       def initialize(post)
         @post = post
@@ -67,7 +85,7 @@ module Tumblr
       end
 
       def feed_ready?
-        ['regular', 'link', 'photo'].include?(@post['type'])
+        ['regular', 'link', 'photo', 'quote', 'conversation', 'audio', 'video'].include?(@post['type'])
       end
 
       private
@@ -75,14 +93,40 @@ module Tumblr
       def convert
         @link, @date = @post['url'], Time.parse(@post['date'])
 
-        case @post['type']
-        when 'regular'
-          then @title, @description = @post['regular_title'].to_rss_title, @post['regular_body'].to_rss_description
-        when 'link'
-          then @title, @description = @post['link_text'].to_rss_title, %Q{<a href="#{@post['link_url']}" target="_blank">#{@post['link_text'].to_rss_description}</a>}
-        when 'photo'
-          then @title, @description = @post['photo_caption'].to_rss_title, %Q{<img src="#{@post['photo_url'].first}" alt="#{@post['photo_caption'].to_rss_title}" />}
-        end
+        send("conver_to_#{@post['type']}".to_sym)
+
+        @description = @title if @description.blank?
+        @title = %Q{<![CDATA[#{@title}]]>}
+        @description = %Q{<![CDATA[#{@description}]]>}
+      end
+
+      def conver_to_regular
+        @title, @description = @post['regular_title'].to_rss_title, @post['regular_body'].to_rss_description
+      end
+
+      def conver_to_link
+        @link, @title, @description = @post['link_url'].to_rss_link, @post['link_text'].to_rss_title, @post['link_description'].to_rss_description
+      end
+
+      def conver_to_photo
+        @title, @description = @post['photo_caption'].to_rss_title,
+          %Q{<a href="#{@link}" target="_blank"><img src="#{@post['photo_url'].last}" alt="#{@post['photo_caption'].to_rss_title}" /></a>}
+      end
+
+      def conver_to_quote
+        @title, @description = @post['quote_source'].to_rss_title, @post['quote_text']
+      end
+
+      def conver_to_conversation
+        @title, @description = @post['conversation_title'].to_rss_title, @post['conversation_text'].to_rss_description
+      end
+
+      def conver_to_audio
+        @title, @audio_enclosure = @post['audio_caption'].to_rss_title, @post['download_url']
+      end
+
+      def conver_to_video
+        @title, @video_enclosure = @post['video_caption'].to_rss_title, @post['video_source']
       end
     end
 
@@ -121,11 +165,12 @@ module Tumblr
             next unless post.feed_ready?
 
             xml.item do
-              xml.title post.title
-              # we need to inject full html here
+              xml.title  {|html| html << post.title }
               xml.description {|html| html << post.description }
               xml.pubDate post.date
               xml.link post.link
+              xml.enclosure :url => post.audio_enclosure, :type => 'audio/mpeg' unless post.audio_enclosure.blank?
+              xml.enclosure :url => post.video_enclosure, :type => 'video/mpeg' unless post.video_enclosure.blank?
             end
           end
         end

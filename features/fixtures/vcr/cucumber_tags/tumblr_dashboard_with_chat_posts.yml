@@ -1,0 +1,42 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://www.tumblr.com:80/api/dashboard?filter=&start=0&num=20&type=&password=123456&likes=0&email=tumblr-dashboard-rss%40timurv.ru
+    body: 
+    headers: 
+      connection: 
+      - close
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      p3p: 
+      - CP="ALL ADM DEV PSAi COM OUR OTRo STP IND ONL"
+      content-type: 
+      - text/xml; charset=UTF-8
+      connection: 
+      - close
+      x-tumblr-usec: 
+      - D=72387
+      x-robots-tag: 
+      - noindex
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 05 Oct 2010 20:47:20 GMT
+      content-length: 
+      - "1738"
+      x-cache-auto: 
+      - miss
+      vary: 
+      - Accept-Encoding
+      cache-control: 
+      - max-age=900
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <tumblr version="1.0"><posts><post id="1250855671" url="http://tumblr-dashboard-rss.tumblr.com/post/1250855671" url-with-slug="http://tumblr-dashboard-rss.tumblr.com/post/1250855671/me-with-some-one" type="conversation" date-gmt="2010-10-05 20:45:54 GMT" date="Tue, 05 Oct 2010 16:45:54" unix-timestamp="1286311554" format="html" reblog-key="lwc4u3mC" slug="me-with-some-one" tumblelog="tumblr-dashboard-rss" note-count="0"><tumblelog title="tumblr-dashboard-rss" name="tumblr-dashboard-rss" url="http://tumblr-dashboard-rss.tumblr.com/" timezone="US/Eastern" avatar-url-16="http://assets.tumblr.com/images/default_avatar_16.gif" avatar-url-24="http://assets.tumblr.com/images/default_avatar_24.gif" avatar-url-30="http://assets.tumblr.com/images/default_avatar_30.gif" avatar-url-40="http://assets.tumblr.com/images/default_avatar_40.gif" avatar-url-48="http://assets.tumblr.com/images/default_avatar_48.gif" avatar-url-64="http://assets.tumblr.com/images/default_avatar_64.gif" avatar-url-96="http://assets.tumblr.com/images/default_avatar_96.gif" avatar-url-128="http://assets.tumblr.com/images/default_avatar_128.gif" avatar-url-512="http://assets.tumblr.com/images/default_avatar_128.gif"/><conversation-title>Me with some one</conversation-title><conversation-text>Tourist: Could you give us directions to Olive Garden?&#13;
+      New Yorker: No, but I could give you directions to an actual Italian restaurant.</conversation-text><conversation><line name="Tourist" label="Tourist:">Could you give us directions to Olive Garden?&#13;</line><line name="New Yorker" label="New Yorker:">No, but I could give you directions to an actual Italian restaurant.</line></conversation></post></posts></tumblr>
+
+    http_version: "1.1"

@@ -1,0 +1,41 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://www.tumblr.com:80/api/dashboard?filter=&start=0&num=20&type=&password=123456&likes=0&email=tumblr-dashboard-rss%40timurv.ru
+    body: 
+    headers: 
+      connection: 
+      - close
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      p3p: 
+      - CP="ALL ADM DEV PSAi COM OUR OTRo STP IND ONL"
+      content-type: 
+      - text/xml; charset=UTF-8
+      connection: 
+      - close
+      x-tumblr-usec: 
+      - D=95484
+      x-robots-tag: 
+      - noindex
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 05 Oct 2010 21:29:04 GMT
+      content-length: 
+      - "1969"
+      x-cache-auto: 
+      - miss
+      vary: 
+      - Accept-Encoding
+      cache-control: 
+      - max-age=900
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <tumblr version="1.0"><posts><post id="1251132902" url="http://tumblr-dashboard-rss.tumblr.com/post/1251132902" url-with-slug="http://tumblr-dashboard-rss.tumblr.com/post/1251132902/you-tube-video" type="video" date-gmt="2010-10-05 21:27:59 GMT" date="Tue, 05 Oct 2010 17:27:59" unix-timestamp="1286314079" format="html" reblog-key="yz9L44sI" slug="you-tube-video" tumblelog="tumblr-dashboard-rss" note-count="0"><tumblelog title="tumblr-dashboard-rss" name="tumblr-dashboard-rss" url="http://tumblr-dashboard-rss.tumblr.com/" timezone="US/Eastern" avatar-url-16="http://assets.tumblr.com/images/default_avatar_16.gif" avatar-url-24="http://assets.tumblr.com/images/default_avatar_24.gif" avatar-url-30="http://assets.tumblr.com/images/default_avatar_30.gif" avatar-url-40="http://assets.tumblr.com/images/default_avatar_40.gif" avatar-url-48="http://assets.tumblr.com/images/default_avatar_48.gif" avatar-url-64="http://assets.tumblr.com/images/default_avatar_64.gif" avatar-url-96="http://assets.tumblr.com/images/default_avatar_96.gif" avatar-url-128="http://assets.tumblr.com/images/default_avatar_128.gif" avatar-url-512="http://assets.tumblr.com/images/default_avatar_128.gif"/><video-caption>&lt;p&gt;You tube video&lt;/p&gt;</video-caption><video-source>http://www.youtube.com/watch?v=8mVEGfH4s5g</video-source><video-player>&lt;object width="400" height="336"&gt;&lt;param name="movie" value="http://www.youtube.com/v/8mVEGfH4s5g&amp;amp;rel=0&amp;amp;egm=0&amp;amp;showinfo=0&amp;amp;fs=1"&gt;&lt;/param&gt;&lt;param name="wmode" value="transparent"&gt;&lt;/param&gt;&lt;param name="allowFullScreen" value="true"&gt;&lt;/param&gt;&lt;embed src="http://www.youtube.com/v/8mVEGfH4s5g&amp;amp;rel=0&amp;amp;egm=0&amp;amp;showinfo=0&amp;amp;fs=1" type="application/x-shockwave-flash" width="400" height="336" allowFullScreen="true" wmode="transparent"&gt;&lt;/embed&gt;&lt;/object&gt;</video-player></post></posts></tumblr>
+
+    http_version: "1.1"

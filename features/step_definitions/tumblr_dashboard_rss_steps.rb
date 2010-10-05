@@ -21,8 +21,23 @@ Then /^should have item with "([^"]*)" like "([^"]*)"$/ do |field, string|
   Then %Q{should have xml path "/rss/channel/item/#{field}" with "#{string}"}
 end
 
-Then /^should have item with description with image$/ do
-  Then %Q{should have xml path "/rss/channel/item/description/img"}
+Then /^should have xml path "([^"]*)"(?: with "([^"]*)")? in the "([^"]*)"$/ do |xpath, text, field|
+  node = LibXML::XML::Parser.string(@rss).parse.find("/rss/channel/item/#{field}").first
+  node.should_not be_blank
+
+  node.content.should have_xml(xpath, text)
+end
+
+Then /^should have item with image "([^"]*)" in the description$/ do |image|
+  Then %Q{should have xml path "/a/img[@src='#{image}']" in the "description"}
+end
+
+Then /^should have item with audio enclosure "([^"]*)"$/ do |audio|
+  Then %Q{should have xml path "/rss/channel/item/enclosure[@type='audio/mpeg'][@url='#{audio}']"}
+end
+
+Then /^should have item with video enclosure "([^"]*)"$/ do |video|
+  Then %Q{should have xml path "/rss/channel/item/enclosure[@type='video/mpeg'][@url='#{video}']"}
 end
 
 Then /^save RSS to the file "([^"]*)"$/ do |file|

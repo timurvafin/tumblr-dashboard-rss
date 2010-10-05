@@ -2,12 +2,11 @@ require 'libxml'
 
 Spec::Matchers.define :have_xml do |xpath, text|
   match do |body|
-    parser = LibXML::XML::Parser.string(body)
-    doc = parser.parse
-    nodes = doc.find(xpath)
-    nodes.empty?.should be_false
+    @nodes = LibXML::XML::Parser.string(body).parse.find(xpath)
+    @nodes.should_not be_blank
+    
     if text
-      nodes.each do |node|
+      @nodes.each do |node|
         node.content.match(Regexp.escape(text)).should_not be_blank
       end
     end
@@ -15,10 +14,10 @@ Spec::Matchers.define :have_xml do |xpath, text|
   end
 
   failure_message_for_should do |body|
-    "expected to find xml tag #{xpath} in:\n#{body}"
+    "expected to find xml tag #{xpath} in:\n#{body}\nNodes:\n#{@nodes.to_a.inspect}\n"
   end
 
-  failure_message_for_should_not do |response|
+  failure_message_for_should_not do |body|
     "expected not to find xml tag #{xpath} in:\n#{body}"
   end
 
