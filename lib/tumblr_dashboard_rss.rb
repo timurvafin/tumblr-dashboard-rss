@@ -9,11 +9,11 @@ require 'builder'
 module RSSPostExtension
   
   def to_rss_title
-    to_clean_rss_text
+    to_s.decode_entity.strip_tags.encode_entity
   end
 
   def to_rss_link
-    to_clean_rss_text
+    to_s.decode_entity.strip_tags
   end
 
   def to_rss_description
@@ -21,10 +21,6 @@ module RSSPostExtension
   end
 
   protected
-
-  def to_clean_rss_text
-    to_s.decode_entity.strip_tags.encode_entity
-  end
 
   def strip_tags
     gsub(/<\/?[^>]*>/, "")
@@ -77,7 +73,7 @@ module Tumblr
 
   class DashboardRSS
     class Post
-      attr_reader :title, :description, :link, :date, :audio_enclosure, :video_enclosure
+      attr_reader :title, :description, :link, :date, :audio_enclosure
 
       def initialize(post)
         @post = post
@@ -122,11 +118,12 @@ module Tumblr
       end
 
       def conver_to_audio
-        @title, @audio_enclosure = @post['audio_caption'].to_rss_title, @post['download_url']
+        @title, @audio_enclosure = @post['audio_caption'].to_rss_title, @post['download_url'].to_rss_link
       end
 
       def conver_to_video
-        @title, @video_enclosure = @post['video_caption'].to_rss_title, @post['video_source']
+        @title = @post['video_caption'].to_rss_title
+        @description = %Q{#{@post['video_source']}<br />#{@post['video_caption']}}
       end
     end
 
@@ -142,7 +139,7 @@ module Tumblr
     attr_reader :options
 
     def initialize(email, password, options = {})
-      @options = default_options.update(options)
+      @options = default_options.merge(options)
 
       @data = Api.new(email, password).dashboard(@options['api'])
 
@@ -170,7 +167,6 @@ module Tumblr
               xml.pubDate post.date
               xml.link post.link
               xml.enclosure :url => post.audio_enclosure, :type => 'audio/mpeg' unless post.audio_enclosure.blank?
-              xml.enclosure :url => post.video_enclosure, :type => 'video/mpeg' unless post.video_enclosure.blank?
             end
           end
         end

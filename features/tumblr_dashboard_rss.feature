@@ -63,7 +63,7 @@ Feature: Generating RSS from tumblr dashboard
     When I generate RSS from dashboard
     Then RSS should be valid
     And should have item with "title" like "You tube video"
-    And should have item with video enclosure "http://www.youtube.com/watch?v=8mVEGfH4s5g"
+    And should have item with "description" like "http://www.youtube.com/watch?v=8mVEGfH4s5g"
     And save RSS to the file "tumblr_dashboard_with_video_posts.xml"
 
   @tumblr_dashboard_with_full_of_posts
