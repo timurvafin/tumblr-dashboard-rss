@@ -3,7 +3,11 @@ Given /^a have tumblr account with "(.*?)\/(.*?)"$/ do |email, password|
 end
 
 When /^I generate RSS from dashboard$/ do
-  @rss = @tumblr.to_rss
+  begin
+    @rss = @tumblr.to_rss
+  rescue => e
+    @exception = e
+  end
 end
 
 Then /^should have xml path "([^"]*)"(?: with "([^"]*)")?$/ do |xpath, text|
@@ -42,6 +46,14 @@ end
 
 Then /^save RSS to the file "([^"]*)"$/ do |file|
   File.open(file, 'w') { |f| f.write(@rss.to_s) }
+end
+
+Then /^I should get exception$/ do
+  @exception.should_not be_nil
+  @exception.class.should == Tumblr::Api::Error
+  @exception.to_s.should == 'Invalid credentials.'
+
+  raise_error
 end
 
 

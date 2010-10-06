@@ -72,3 +72,9 @@ Feature: Generating RSS from tumblr dashboard
     When I generate RSS from dashboard
     Then RSS should be valid
     And save RSS to the file "tumblr_dashboard_with_full_of_posts.xml"
+
+  @access_with_invalid_credentials
+  Scenario: Access with invalid credentials
+    Given a have tumblr account with "tumblr-dashboard-rss@timurv.ru/invalid password"
+    When I generate RSS from dashboard
+    Then I should get exception

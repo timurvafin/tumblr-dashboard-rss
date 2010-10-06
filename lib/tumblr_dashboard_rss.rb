@@ -45,6 +45,16 @@ end
 
 module Tumblr
   class Api
+    class Error < Net::HTTPError
+      def initialize(response)
+        @response = response
+      end
+
+      def to_s
+        @response.parsed_response
+      end
+    end
+
     include HTTParty
     format :xml
 
@@ -67,7 +77,9 @@ module Tumblr
           'password' => @password
         })
 
-      self.class.get('http://www.tumblr.com/api/dashboard', :query => options)
+      response = self.class.get('http://www.tumblr.com/api/dashboard', :query => options)
+      raise Error.new(response) unless response.code == 200
+      response
     end
   end
 
@@ -139,12 +151,8 @@ module Tumblr
     attr_reader :options
 
     def initialize(email, password, options = {})
+      @email, @password = email, password
       @options = default_options.merge(options)
-
-      @data = Api.new(email, password).dashboard(@options['api'])
-
-      @posts = @data['tumblr']['posts']['post']
-      @posts = [@posts] unless @posts.is_a?(Array)
     end
 
     def to_rss
@@ -157,7 +165,7 @@ module Tumblr
           xml.description @options['channel_description']
           xml.link @options['channel_link']
 
-          @posts.each do |unconverted_post|
+          posts.each do |unconverted_post|
             post = Post.new(unconverted_post)
             next unless post.feed_ready?
 
@@ -171,6 +179,19 @@ module Tumblr
           end
         end
       end
+    end
+
+    private
+
+    def posts
+      return @posts unless @posts.blank?
+
+      @data = Api.new(@email, @password).dashboard(@options['api'])
+
+      @posts = @data['tumblr']['posts']['post']
+      @posts = [@posts] unless @posts.is_a?(Array)
+
+      @posts
     end
   end
 end
