@@ -1,8 +1,8 @@
-require 'libxml'
+require 'nokogiri'
 
 Spec::Matchers.define :have_xml do |xpath, text|
   match do |body|
-    @nodes = LibXML::XML::Parser.string(body).parse.find(xpath)
+    @nodes = Nokogiri::XML(body).xpath(xpath)
     @nodes.should_not be_blank
     
     if text

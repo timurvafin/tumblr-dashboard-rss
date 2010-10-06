@@ -22,7 +22,7 @@ Then /^should have item with "([^"]*)" like "([^"]*)"$/ do |field, string|
 end
 
 Then /^should have xml path "([^"]*)"(?: with "([^"]*)")? in the "([^"]*)"$/ do |xpath, text, field|
-  node = LibXML::XML::Parser.string(@rss).parse.find("/rss/channel/item/#{field}").first
+  node = Nokogiri::XML(@rss).xpath("/rss/channel/item/#{field}").first
   node.should_not be_blank
 
   node.content.should have_xml(xpath, text)
