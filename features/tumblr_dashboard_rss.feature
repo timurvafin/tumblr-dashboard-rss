@@ -17,7 +17,7 @@ Feature: Generating RSS from tumblr dashboard
     When I generate RSS from dashboard
     Then RSS should be valid
     And should have item with "title" like "Photo caption"
-    And should have item with image "http://25.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_75sq.png" in the description
+    And should have item with image "http://26.media.tumblr.com/tumblr_l7tdi6nFiq1qdv6d1o1_250.png" in the description
     And save RSS to the file "tumblr_dashboard_with_photo_posts.xml"
 
   @tumblr_dashboard_with_quote_posts

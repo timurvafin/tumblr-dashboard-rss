@@ -118,7 +118,7 @@ module Tumblr
 
       def conver_to_photo
         @title, @description = @post['photo_caption'].to_rss_title,
-          %Q{<a href="#{@link}" target="_blank"><img src="#{@post['photo_url'].last}" alt="#{@post['photo_caption'].to_rss_title}" /></a>}
+          %Q{<a href="#{@link}" target="_blank"><img src="#{@post['photo_url'].first}" alt="#{@post['photo_caption'].to_rss_title}" /></a>}
       end
 
       def conver_to_quote
