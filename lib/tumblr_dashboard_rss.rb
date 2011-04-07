@@ -85,7 +85,7 @@ module Tumblr
 
   class DashboardRSS
     class Post
-      attr_reader :title, :description, :link, :date, :audio_enclosure
+      attr_reader :title, :description, :link, :date, :author, :audio_enclosure
 
       def initialize(post)
         @post = post
@@ -99,7 +99,7 @@ module Tumblr
       private
 
       def convert
-        @link, @date = @post['url'], Time.parse(@post['date'])
+        @link, @date, @author = @post['url'], Time.parse(@post['date']), @post['tumblelog']
 
         send("conver_to_#{@post['type']}".to_sym)
 
@@ -144,7 +144,7 @@ module Tumblr
       'api' => {},
       'channel_name' => 'Tumblr dashboard',
       'channel_link' => 'http://www.tumblr.com/dashboard',
-      'channel_description' => 'Latest posts from all folowers',
+      'channel_description' => 'Latest posts from all followers',
       'channel_do_sort' => true,
     }
 
@@ -173,6 +173,7 @@ module Tumblr
               xml.title  {|html| html << post.title }
               xml.description {|html| html << post.description }
               xml.pubDate post.date
+              xml.author post.author
               xml.link post.link
               xml.enclosure :url => post.audio_enclosure, :type => 'audio/mpeg' unless post.audio_enclosure.blank?
             end
